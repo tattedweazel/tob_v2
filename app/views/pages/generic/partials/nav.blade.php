@@ -24,7 +24,6 @@
                                 @else
                                 <li>{{ link_to_route('register_path', 'Sign Up') }}</li>
                                 <li>{{ link_to_route('login_path', 'Sign In') }}</li>
-                                <li>{{ getenv('APP_ENV') }}</li>
                                 @endif
                             </ul>
                         </li>
