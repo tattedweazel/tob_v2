@@ -25,7 +25,7 @@ class SessionsController extends \BaseController {
 		$formData = Input::only('email', 'password');
 		$this->signInForm->validate($formData);
 		if (Auth::attempt($formData)){
-			return Redirect::intended('/');
+			return Redirect::home();
 		}
 
 
