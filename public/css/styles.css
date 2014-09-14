@@ -164,3 +164,38 @@ body {
     font-size:9px;
     margin-bottom: 10px;
 }
+
+/* Lobby Page
+------------------------- */
+#create-private-label {
+    border: 1px solid #CCC;
+    padding: 5px;
+    margin: 0;
+    /* border-left: none; */
+    border-radius: 0 5px 5px 0;
+}
+
+#game-finder {
+    background-color: #000;
+    color: #00FF00;
+}
+#game-finder .comment {
+    color: #555;
+}
+
+#game-finder .highlight {
+    color: #FFFF00;
+}
+
+#game-finder .warn {
+    color: #FF3333;
+}
+
+#game-finder .game-option-row {
+    cursor: pointer;
+    margin: 5px 0 15px 0;
+}
+
+#game-finder .game-option-row:hover {
+    background-color: #333;
+}

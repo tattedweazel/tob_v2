@@ -81,3 +81,18 @@ Route::get('/lobby', [
 	'before' => 'auth',
 	'uses' => 'LobbyController@index'
 ]);
+
+/**
+ * Games
+ */
+
+Route::get('/games',[
+	'as' => 'games_path',
+	'uses' => 'GamesController@index'
+]);
+
+Route::post('/games/new', [
+	'as' => 'create_game_path',
+	'before' => 'auth',
+	'uses' => 'GamesController@store'
+]);
