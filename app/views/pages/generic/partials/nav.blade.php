@@ -14,9 +14,8 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li {{ ($section_title == 'Home') ? 'class="active"':'' }}>{{ link_to_route('home', 'Home') }}</li>
-                        <li {{ ($section_title == 'About') ? 'class="active"':'' }}><a href="#about">About</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ ($current_user) ? $current_user->gravatar(20).' '.$current_user->username : 'Account' }} <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 @if ($current_user)
                                 <li>{{ link_to_route('update_account_path', 'My Settings') }}</li>

@@ -65,4 +65,33 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		return $user;
 	}
+
+	public function gravatar($size = false, $attr = [], $link = false){
+		$url = "http://gravatar.com/avatar/";
+		$hash = md5($this->email);
+		$extra = '';
+		if ($size){
+			$extra = "?s=".$size;
+		}
+		$gravatarLink = $url.$hash.$extra;
+
+		$attrString = '';
+		foreach ($attr as $key => $val){
+			$attrString .= " $key='$val'";
+		}
+
+		$imgStr = "<img src='$gravatarLink' alt='$this->username' $attrString/>";
+
+		if ($link){
+			$dest = $link[0];
+			$options = $link[1];
+			$optionString = '';
+			foreach ($options as $key => $val){
+				$optionString .= " $key='$val'";
+			}
+			$wrapper = "<a href='$dest' $optionString>$imgStr</a>";
+			return $wrapper;
+		}
+		return $imgStr;
+	}
 }

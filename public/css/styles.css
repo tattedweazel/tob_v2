@@ -156,3 +156,11 @@ body {
         margin-top: 120px;
     }
 }
+
+/* Account Page
+------------------------- */
+
+.gravatar-info {
+    font-size:9px;
+    margin-bottom: 10px;
+}
