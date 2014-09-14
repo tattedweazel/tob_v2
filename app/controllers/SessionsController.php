@@ -25,7 +25,7 @@ class SessionsController extends \BaseController {
 		$formData = Input::only('email', 'password');
 		$this->signInForm->validate($formData);
 		if (Auth::attempt($formData)){
-			return Redirect::intended('/');
+			return Redirect::intended('/lobby');
 		}
 		else {
 			return Redirect::back()->withErrors("The information you've entered is incorrect. Please try harder.");

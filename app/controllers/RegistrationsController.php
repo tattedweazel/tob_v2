@@ -29,7 +29,7 @@ class RegistrationsController extends \BaseController {
 
 		Auth::login($user);
 
-		return Redirect::home();
+		return Redirect::route('lobby_path');
 	}
 
 }
