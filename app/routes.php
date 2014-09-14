@@ -71,3 +71,13 @@ Route::post('/account/password',[
 	'before' => 'auth',
 	'uses' => 'AccountsController@updatePassword'
 ]);
+
+/**
+ * Lobby
+ */
+
+Route::get('/lobby', [
+	'as' => 'lobby_path',
+	'before' => 'auth',
+	'uses' => 'LobbyController@index'
+]);
