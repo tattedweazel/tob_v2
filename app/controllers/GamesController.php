@@ -58,6 +58,8 @@ class GamesController extends \BaseController {
 		$game = Game::createNew($formData['name'], $formData['players'], $formData['private'], $password, $current_user->id);
 		$game->save();
 
+		return Redirect::route('lobby_path');
+
 	}
 
 	/**
