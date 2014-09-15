@@ -1,6 +1,5 @@
 <?php
 
-use Hash;
 use Tob\Games\Forms\CreatePrivateGameForm;
 use Tob\Games\Forms\CreatePublicGameForm;
 use Tob\Games\Forms\GamePasswordForm;
