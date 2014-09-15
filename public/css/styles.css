@@ -199,3 +199,9 @@ body {
 #game-finder .game-option-row:hover {
     background-color: #333;
 }
+
+@media screen and (max-width: 400px){
+    #game-finder{
+        font-size: 11px;
+    }
+}
