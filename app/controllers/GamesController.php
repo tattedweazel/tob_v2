@@ -165,12 +165,15 @@ class GamesController extends \BaseController {
 	private function ensureJoinable($game){
 		if (! isset($game->id)){
 			return Redirect::route('lobby_path')->withErrors('Cannot find game');
+			exit();
 		}
 		if ($this->gameIsFull($game)){
 			return Redirect::route('lobby_path')->withErrors('This game is full');
+			exit();
 		}
 		if ( ! $game->open){
 			return Redirect::route('lobby_path')->withErrors('This game is closed');
+			exit();
 		}
 	}
 
