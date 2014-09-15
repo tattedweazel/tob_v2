@@ -97,7 +97,9 @@ class GamesController extends \BaseController {
 	public function join($id){
 		$game = Game::find($id);
 
-		$this->ensureJoinable($game);
+		if (! $error = $this->ensureJoinable($game)){
+			return Redirect::route('lobby_path')->withErrors($error);
+		}
 
 		// If they're already on the roster, just send'em through
 		if ($this->isInGame($game)){
@@ -115,7 +117,9 @@ class GamesController extends \BaseController {
 	public function authCheck($id){
 		$game = Game::find($id);
 
-		$this->ensureJoinable($game);
+		if (! $error = $this->ensureJoinable($game)){
+			return Redirect::route('lobby_path')->withErrors($error);
+		}
 
 		return View::make('pages.games.authorize')
 			->withGame($game)
@@ -129,7 +133,9 @@ class GamesController extends \BaseController {
 
 		$game = Game::find($id);
 
-		$this->ensureJoinable($game);
+		if (! $error = $this->ensureJoinable($game)){
+			return Redirect::route('lobby_path')->withErrors($error);
+		}
 
 		if ($game->password != $formData['password']){
 			return Redirect::back()->withErrors('Incorrect Password');
@@ -164,17 +170,15 @@ class GamesController extends \BaseController {
 
 	private function ensureJoinable($game){
 		if (! isset($game->id)){
-			return Redirect::route('lobby_path')->withErrors('Cannot find game');
-			exit();
+			return 'Cannot find game';
 		}
 		if ($this->gameIsFull($game)){
-			return Redirect::route('lobby_path')->withErrors('This game is full');
-			exit();
+			return 'This game is full';
 		}
 		if ( ! $game->open){
-			return Redirect::route('lobby_path')->withErrors('This game is closed');
-			exit();
+			return 'This game is closed';
 		}
+		return true;
 	}
 
 }
