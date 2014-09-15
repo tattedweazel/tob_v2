@@ -3,6 +3,7 @@
 use Tob\Games\Forms\CreatePrivateGameForm;
 use Tob\Games\Forms\CreatePublicGameForm;
 use Tob\Games\Game;
+use Tob\Players\Player;
 
 class GamesController extends \BaseController {
 
@@ -54,9 +55,11 @@ class GamesController extends \BaseController {
 		}
 
 		$current_user = Auth::user();
-
 		$game = Game::createNew($formData['name'], $formData['players'], $formData['private'], $password, $current_user->id);
 		$game->save();
+
+		$player = new Player(['game_id' => $game->id, 'user_id' => $current_user->id, 'slot' => 1]);
+		$player->save();
 
 		return Redirect::route('lobby_path');
 

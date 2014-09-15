@@ -96,3 +96,9 @@ Route::post('/games/new', [
 	'before' => 'auth',
 	'uses' => 'GamesController@store'
 ]);
+
+Route::get('/games/{id}',[
+	'as' => 'match_path',
+	'before' => 'auth',
+	'uses' => 'GamesController@show'
+]);
