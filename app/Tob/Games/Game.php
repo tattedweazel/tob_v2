@@ -22,16 +22,16 @@ class Game extends \Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('name', 'players', 'private', 'password', 'user_id');
+	protected $fillable = array('name', 'max_players', 'private', 'password', 'user_id');
 
 	/**
 	 * Always hash yo shit sucka
 	 *
 	 * @param $password
 	 */
-	public function setPasswordAttribute($password){
-		$this->attributes['password'] = Hash::make($password);
-	}
+//	public function setPasswordAttribute($password){
+//		$this->attributes['password'] = Hash::make($password);
+//	}
 
 	/**
 	 * Create a game
@@ -44,13 +44,13 @@ class Game extends \Eloquent {
 	 * @internal param $email
 	 * @return static
 	 */
-	public static function createNew($name, $players, $private, $password, $user_id){
+	public static function createNew($name, $max_players, $private, $password, $user_id){
 
 		if ($private){
-			$game = new static(compact('name', 'players', 'private', 'password', 'user_id'));
+			$game = new static(compact('name', 'max_players', 'private', 'password', 'user_id'));
 		}
 		else {
-			$game = new static(compact('name', 'players', 'user_id'));
+			$game = new static(compact('name', 'max_players', 'user_id'));
 		}
 
 		$game->raise(new GameCreated($game));
@@ -60,5 +60,9 @@ class Game extends \Eloquent {
 
 	public function user(){
 		return $this->belongsTo('Tob\Users\User');
+	}
+
+	public function player(){
+		return $this->hasMany('Tob\Players\Player');
 	}
 }

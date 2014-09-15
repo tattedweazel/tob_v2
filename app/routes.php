@@ -97,6 +97,24 @@ Route::post('/games/new', [
 	'uses' => 'GamesController@store'
 ]);
 
+Route::get('/games/{id}/join',[
+	'as' => 'join_game_path',
+	'before' => 'auth',
+	'uses' => 'GamesController@join'
+]);
+
+Route::get('/games/{id}/authorize', [
+	'as' => 'match_authorize_path',
+	'before' => 'auth',
+	'uses' => 'GamesController@authCheck'
+]);
+
+Route::post('/games/{id}/authorize', [
+	'as' => 'match_authorize_path',
+	'before' => 'auth',
+	'uses' => 'GamesController@authorize'
+]);
+
 Route::get('/games/{id}',[
 	'as' => 'match_path',
 	'before' => 'auth',

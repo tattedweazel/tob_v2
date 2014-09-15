@@ -12,9 +12,13 @@
             <p class="comment">* * * * * * * * * * * * * * * * * * * *</p>
             @foreach ($available_games as $game)
 
+
                 <div class="game-option-row">
-                    <span>&gt; {{$game->name}} <span class="comment">:</span> <span class="highlight">{{ $game->players }} Players</span>  <span class="comment">:</span> {{ ($game->private) ? '<span class="comment">#<span class="warn">PRIVATE</span>#</span>' : '<span class="comment">#</span>PUBLIC<span class="comment">#</span>' }} <span class="comment">:</span> {{$game->user['username']}}</span>
+                    <a href="{{ URL::to('/games/'.$game->id.'/join') }}">
+                        <span>&gt; {{$game->name}} <span class="comment">:</span> <span class="highlight">{{ $game->max_players }} Players</span>  <span class="comment">:</span> {{ ($game->private) ? '<span class="comment">#<span class="warn">PRIVATE</span>#</span>' : '<span class="comment">#</span>PUBLIC<span class="comment">#</span>' }} <span class="comment">:</span> {{$game->user['username']}}</span>
+                    </a>
                 </div>
+
                 <p class="comment">. . . . . . . . . . . . . . . . . . . .</p>
             @endforeach
         </div>

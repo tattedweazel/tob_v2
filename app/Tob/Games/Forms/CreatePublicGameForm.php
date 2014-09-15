@@ -7,7 +7,7 @@ class CreatePublicGameForm extends FormValidator {
 
 	protected $rules = [
 		"name" => 'required',
-		"players" => "required|numeric|min:1",
+		"max_players" => "required|numeric|min:1",
 	];
 
 }

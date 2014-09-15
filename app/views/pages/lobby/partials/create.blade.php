@@ -14,7 +14,7 @@
 
                     <div class="input-group input-group-lg push-bottom">
                         <span class="input-group-addon"><i class="fa fa-group"></i></span>
-                        <input type="number" class="form-control" name="players" placeholder="Number of Players" required>
+                        <input type="number" class="form-control" name="max_players" placeholder="Number of Players" required>
                     </div>
                     <div class="row">
                       <div class="col-lg-6">
