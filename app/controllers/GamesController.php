@@ -96,7 +96,7 @@ class GamesController extends \BaseController {
 	public function join($id){
 		$game = Game::find($id);
 
-		if (! $error = $this->ensureJoinable($game)){
+		if ($error = $this->ensureJoinable($game)){
 			return Redirect::route('lobby_path')->withErrors($error);
 		}
 
@@ -116,7 +116,7 @@ class GamesController extends \BaseController {
 	public function authCheck($id){
 		$game = Game::find($id);
 
-		if (! $error = $this->ensureJoinable($game)){
+		if ($error = $this->ensureJoinable($game)){
 			return Redirect::route('lobby_path')->withErrors($error);
 		}
 
@@ -132,7 +132,7 @@ class GamesController extends \BaseController {
 
 		$game = Game::find($id);
 
-		if (! $error = $this->ensureJoinable($game)){
+		if ($error = $this->ensureJoinable($game)){
 			return Redirect::route('lobby_path')->withErrors($error);
 		}
 
@@ -177,7 +177,7 @@ class GamesController extends \BaseController {
 		if ( ! $game->open){
 			return 'This game is closed';
 		}
-		return true;
+		return false;
 	}
 
 }
